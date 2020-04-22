@@ -28,6 +28,26 @@ jobs:
       - run: ( cd nvmeadm && cargo test )
       - run: ( cd mayastor && cargo test -- --test-threads=1 )
       - run: ( cd nvmeadm && cargo test )
+      - uses: actions/upload-artifact@v1
+        with:
+          name: mayastor
+          path: ./target/debug/mayastor
+      - uses: actions/upload-artifact@v1
+        with:
+          name: mayastor-agent
+          path: ./target/debug/mayastor-agent
+      - uses: actions/upload-artifact@v1
+        with:
+          name: mayastor-client
+          path: ./target/debug/mayastor-client
+      - uses: actions/upload-artifact@v1
+        with:
+          name: mctl
+          path: ./target/debug/mctl
+      - uses: actions/upload-artifact@v1
+        with:
+          name: spdk
+          path: ./target/debug/spdk
   Test:
     name: Run mocha tests
     runs-on: ubuntu-latest
